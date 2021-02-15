@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block title%} {{ post.title }} {%endblock%}
+{% block content%}
+<h1>Welcome to Blog</h1>
+<hr>
+<br>
+<ul>
+    <li> <h3> {{post.title}} </h3> <br> By {{post.author}}</li>
+    <hr>
+   {{post.body}}
+   <br>
+   <a href="{% url 'home' %}"> Back</a>
+</ul>
+{%endblock%}
