@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 {% block title%} Update Post {%endblock%}
 {% block content%}
+{% if user.is_authenticated %}
 <h1>Update Your Post</h1>
 <hr>
 <br>
@@ -10,5 +11,8 @@
     <button >Update</button>
     <button > <a href="{% url 'home' %}"> Cancel </a> </button>
     </form>
-    
+    {% else %}
+    <h1>Oops... You are logged Out.  </h1> 
+
+{% endif %}
 {%endblock%}

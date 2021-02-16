@@ -1,16 +1,20 @@
 {% extends 'index.html' %}
 {% block title%} {{ post.title }} {%endblock%}
 {% block content%}
-<h1>Welcome to Blog</h1>
-<hr>
-<br>
+{% if user.is_authenticated %}
 <ul>
-    <li> <h3> {{post.title}} </h3> <br> By {{post.author}}</li>
-    <a href="{% url 'edit' post.pk %}"> Edit</a>
+    <li> <h2> {{post.title}} </h2> <br> By {{post.author}} - {{ post.publication_date }}</li>
     
+    <button> <a href="{% url 'edit' post.pk %}"> Edit  </a>  </button> <span style="padding-left:20px"></span>
+      <button> <a href="{% url 'delete' post.pk %}">Delete</a>  </button>
+
     <hr>
    {{post.body}}
    <br>
    <a href="{% url 'home' %}"> Back</a>
+   
 </ul>
+{% else %}
+<h1>Oops... You are logged Out.  </h1> 
+{% endif %}
 {%endblock%}

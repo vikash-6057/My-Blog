@@ -39,6 +39,7 @@
               >Home</a
             >
           </div>
+          {% if user.is_authenticated %}
           <div class="navbar-nav">
             <a
               class="nav-link active"
@@ -47,6 +48,34 @@
               >Add Post</a
             >
           </div>
+          <div class="navbar-nav">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'logout' %}"
+              >Log Out</a
+            >
+          </div>
+
+          {% else %}
+
+          <div class="navbar-nav">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'signup' %}"
+              >Sign Up</a
+            >
+          </div>
+          <div class="navbar-nav">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'login' %}"
+              >Log In</a
+            >
+          </div>
+          {% endif %}
 
         </div>
       </div>
