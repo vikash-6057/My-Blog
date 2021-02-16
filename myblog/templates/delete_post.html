@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block title%} Update Post {%endblock%}
+{% block content%}
+<h1>Delete Post</h1>
+<hr>
+<br>
+<form method="POST">
+    {% csrf_token %}
+    <strong>Are you sure??  You Want To Delete "{{post.title}}"  </strong>
+    <br>
+    <br>
+    <button >Confirm</button>
+    <button > <a href="{% url 'home' %}"> Cancel </a> </button>
+    </form>
+    
+{%endblock%}

@@ -6,6 +6,8 @@
 <br>
 <ul>
     <li> <h3> {{post.title}} </h3> <br> By {{post.author}}</li>
+    <a href="{% url 'edit' post.pk %}"> Edit</a>
+    
     <hr>
    {{post.body}}
    <br>
