@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block title%} {{name}} {%endblock%}
+{% block content%}
+
+<h1> {{name}} </h1>
+<hr>
+<ul>
+    <br />
+    {% for post in category_list %}
+    <li><a href="{% url 'article' post.pk%} "> {{ post.title }}   <span style="padding-left:20px"></span> </a>  
+     
+      {% if user.is_authenticated %}
+
+      {% if user.id == post.author.id %}
+      <button> <a href="{% url 'edit' post.pk %}"> Edit  </a>  </button> <span style="padding-left:20px"></span>
+        <button> <a href="{% url 'delete' post.pk %}">Delete</a>  </button>
+        {% endif %}
+
+        {% endif %}
+    </li>
+    By - 
+    {{post.author.first_name}} {{post.author.last_name}}
+    <br />
+    <br />
+    {% endfor %}
+  </ul>
+
+{%endblock%}

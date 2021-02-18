@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block title%} Author {%endblock%}
+{% block content%}
+
+{% if user.is_authenticated %}
+
+
+{% for post in author_list|slice:":1" %}
+<h1>{{post.author.first_name}} {{post.author.last_name}} </h1>
+{% endfor %}
+<hr>
+<!-- {% for post in author_list %}  
+    {% if forloop.first %} <h1>{{post.author.first_name}} {{post.author.last_name}} </h1> 
+    {% endif %}
+{% endfor %} -->
+<ul>
+    <br />
+    {% for post in author_list %}
+    <li><a href="{% url 'article' post.pk%} "> {{ post.title }}   <span style="padding-left:20px"></span> </a>  
+     
+  
+       <button> <a href="{% url 'edit' post.pk %}"> Edit  </a>  </button> <span style="padding-left:20px"></span>
+        <button> <a href="{% url 'delete' post.pk %}">Delete</a>  </button>
+  
+        <br>
+        {{post.category}} 
+    </li>
+    <!-- By - 
+    {{post.author.first_name}} {{post.author.last_name}} -->
+    <br />
+    {% endfor %}
+  </ul>
+
+  {% else %}
+  <h2>Oops... You are logged Out..</h2>
+  {% endif %}
+{%endblock%}

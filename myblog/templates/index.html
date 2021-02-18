@@ -31,23 +31,56 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
+          <div class="navbar-nav mr-auto">
             <a
               class="nav-link active"
               aria-current="page"
               href="{% url 'home' %}"
-              >Home</a
+              >Home </a
             >
           </div>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: #ffffff;" style="display: contents;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+
+
+              {% for cat in category %}
+              <li> <a class="dropdown-item"  href="{% url 'category' cat.name %}"> {{cat.name}} </a> </li> 
+              {% endfor %}
+              </ul>
+          </li>
+
           {% if user.is_authenticated %}
           <div class="navbar-nav">
             <a
               class="nav-link active"
               aria-current="page"
               href="{% url 'addpost' %}"
-              >Add Post</a
+              >Add Blog</a
             >
           </div>
+          <div class="navbar-nav">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'addcategory' %}"
+              >Add Category</a
+            >
+          </div>
+
+
+          <div class="navbar-nav">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="{% url 'author' %}"
+              > My Blog  </a
+            >
+          </div>
+
           <div class="navbar-nav">
             <a
               class="nav-link active"

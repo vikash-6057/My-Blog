@@ -1,12 +1,20 @@
 {% extends 'index.html' %} 
 {% block title%} Add Post {%endblock%} 
 {% block content%}
+{% if user.is_authenticated %}
 <h1>Add Post</h1>
 <hr />
-
 <form method="POST">
   {% csrf_token %} {{ form.as_p }}
   <button>Post</button>
   <button><a href="{% url 'home' %}"> Cancel </a></button>
 </form>
+
+<script>
+  var name="{{user.id}}";
+  document.getElementById("curuser").value=name;
+</script>
+{% else %}
+<h1>Log in to add a Blog..</h1>
+{% endif %}
 {%endblock%}
