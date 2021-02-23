@@ -1,6 +1,6 @@
 from django.urls import path,include
 from home.views import HomeView,ArticleView,AddPostView,UpdatePostView,DeletePostView,AddCategoryView,CategoryView
-from home.views import AuthorView
+from home.views import AuthorView,LikeView
 urlpatterns = [
     # Don't forget to add templates in settings.py
     path('',HomeView.as_view(),name="home"),
@@ -12,4 +12,5 @@ urlpatterns = [
     #path('category<str:name>/',CategoryView,name='category'), (?P<int:pk>[^/]+)/$
     path('category/<str:name>/',CategoryView.as_view(),name='category'),
     path('author/',AuthorView.as_view(),name='author'),
+    path('like/<int:pk>',LikeView,name="like_post"),
 ]

@@ -12,6 +12,24 @@
     <hr>
    {{post.body}}
    <br>
+   <br>
+   <hr>
+   <br>
+   <form action="{% url 'like_post' post.pk %}" method="post">
+
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+
+    {% if liked %}
+    <button type="submit" name="post_id" value="{{ post.id }}" > Unlike </button>
+    {% else %}
+    <button type="submit" name="post_id" value="{{ post.id }}" > Like </button> 
+    {% endif %}
+    {% else %}
+    <h3>Log in to like..</h3>
+    {% endif %}
+      - {{ total_likes }} Likes
+    </form>
    <a href="{% url 'home' %}"> Back</a>
    
 </ul>
